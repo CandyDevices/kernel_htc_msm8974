@@ -150,3 +150,5 @@ obj-$(CONFIG_SENSORS)		+= sensors/
 
 # htc stability files
 obj-y += htc_debug/stability/
+
+obj-$(CONFIG_KCONTROL_GPU_MODULE_MSM)   += gpu/

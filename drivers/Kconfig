@@ -157,5 +157,10 @@ source "drivers/bif/Kconfig"
 source "drivers/htc_debug/stability/Kconfig"
 
 source "drivers/sensors/Kconfig"
+endmenu
+
+menu "KControl Module"
+
+source "drivers/gpu/kcontrol_module/Kconfig"
 
 endmenu

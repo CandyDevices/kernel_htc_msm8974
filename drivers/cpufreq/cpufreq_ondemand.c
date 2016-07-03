@@ -141,7 +141,7 @@ static inline void switch_normal_mode(void) {};
 static void reset_freq_map_table(struct cpufreq_policy *);
 #else
 static unsigned int up_threshold_level[2] __read_mostly = {95, 85};
-struct timer_list freq_mode_timer;
+struct timer_list freq_mode_timero;
 static inline void switch_turbo_mode(unsigned);
 static inline void switch_normal_mode(void);
 static void reset_freq_map_table(struct cpufreq_policy *policy) {};
@@ -886,7 +886,7 @@ static struct attribute_group dbs_attr_group = {
 static inline void switch_turbo_mode(unsigned timeout)
 {
 	if (timeout > 0)
-		mod_timer(&freq_mode_timer, jiffies + msecs_to_jiffies(timeout));
+		mod_timer(&freq_mode_timero, jiffies + msecs_to_jiffies(timeout));
 
 	tbl_select[0] = 2;
 	tbl_select[1] = 3;
@@ -1039,9 +1039,9 @@ static void dbs_init_freq_map_table(struct cpufreq_policy *policy)
 	switch_normal_mode();
 
 	
-	init_timer(&freq_mode_timer);
-	freq_mode_timer.function = switch_mode_timer;
-	freq_mode_timer.data = 0;
+	init_timer(&freq_mode_timero);
+	freq_mode_timero.function = switch_mode_timer;
+	freq_mode_timero.data = 0;
 
 #if 0
 	
@@ -1068,7 +1068,7 @@ static void dbs_deinit_freq_map_table(void)
 		kfree(tblmap[i]);
 
 #ifndef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
-	del_timer(&freq_mode_timer);
+	del_timer(&freq_mode_timero);
 #endif
 }
 
@@ -1109,7 +1109,7 @@ static void dbs_freq_increase(struct cpufreq_policy *p, unsigned load, unsigned 
 	trace_cpufreq_interactive_setspeed (p->cpu, freq, p->cur);
 }
 
-int input_event_boosted(void)
+int input_event_boostedo(void)
 {
 	unsigned long flags;
 
@@ -1289,7 +1289,7 @@ set_freq:
 		return;
 	}
 
-	if (input_event_boosted()) {
+	if (input_event_boostedo()) {
 		trace_cpufreq_interactive_already (policy->cpu, max_cur_load, policy->cur, policy->cur, policy->cur);
 		return;
 	}
@@ -1417,7 +1417,7 @@ static void do_dbs_timer(struct work_struct *work)
 		}
 	} else {
 		delay = dbs_info->freq_lo_jiffies;
-		if (input_event_boosted())
+		if (input_event_boostedo())
 			goto sched_wait;
 
 		__cpufreq_driver_target(dbs_info->cur_policy,

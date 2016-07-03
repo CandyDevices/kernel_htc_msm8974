@@ -3130,9 +3130,8 @@ static struct clk_lookup msm_clocks_8226[] = {
 	CLK_LOOKUP("iface_clk",   gcc_mss_cfg_ahb_clk.c, "fc880000.qcom,mss"),
 	CLK_LOOKUP("mem_clk",    gcc_boot_rom_ahb_clk.c, "fc880000.qcom,mss"),
 
-
-	CLK_LOOKUP("ref_clk",            cxo_d1_a_pin.c, "2-000e"),
-
+	CLK_LOOKUP("ref_clk",            cxo_d1_a_pin.c, ""),
+	CLK_LOOKUP("ref_clk",            cxo_d1_pin.c, "2-000e"),
 
 	CLK_LOOKUP("xo", cxo_pil_pronto_clk.c, "fb21b000.qcom,pronto"),
 
@@ -3607,14 +3606,10 @@ static struct clk_lookup msm_clocks_8226[] = {
 	CLK_LOOKUP("iface_clk",    gcc_ce1_ahb_clk.c,  "fd400000.qcom,qcedev"),
 	CLK_LOOKUP("bus_clk",      gcc_ce1_axi_clk.c,  "fd400000.qcom,qcedev"),
 	CLK_LOOKUP("core_clk_src", ce1_clk_src.c,      "fd400000.qcom,qcedev"),
-
-
-	CLK_LOOKUP("core_clk",     gcc_ce1_clk.c,     "fd404000.qcom,qcrypto"),
-	CLK_LOOKUP("iface_clk",    gcc_ce1_ahb_clk.c, "fd404000.qcom,qcrypto"),
-	CLK_LOOKUP("bus_clk",      gcc_ce1_axi_clk.c, "fd404000.qcom,qcrypto"),
-	CLK_LOOKUP("core_clk_src", ce1_clk_src.c,     "fd404000.qcom,qcrypto"),
-
-
+	CLK_LOOKUP("core_clk",     gcc_ce1_clk.c,     "fd400000.qcom,qcrypto"),
+	CLK_LOOKUP("iface_clk",    gcc_ce1_ahb_clk.c, "fd400000.qcom,qcrypto"),
+	CLK_LOOKUP("bus_clk",      gcc_ce1_axi_clk.c, "fd400000.qcom,qcrypto"),
+	CLK_LOOKUP("core_clk_src", ce1_clk_src.c,     "fd400000.qcom,qcrypto"),
 	CLK_LOOKUP("",		dsi_vco_clk_8226.c,                  ""),
 	CLK_LOOKUP("",		analog_postdiv_clk_8226.c,         ""),
 	CLK_LOOKUP("",		indirect_path_div2_clk_8226.c,     ""),

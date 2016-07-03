@@ -901,7 +901,7 @@ int msm_audio_effects_popless_eq_handler(struct audio_client *ac,
 				goto invalid_config;
 			}
 			for (j = 0; j < eq->config.num_bands; j++) {
-				idx = GET_NEXT(values, param_max_offset, rc);
+				idx = *values++;
 				if (idx >= MAX_EQ_BANDS) {
 					pr_err("EQ_CONFIG:invalid band index\n");
 					rc = -EINVAL;
